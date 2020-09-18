@@ -1,34 +1,14 @@
 # deal-app
 
 ## Project setup
-```
-npm install
-```
+Dependencies are included, since this project is just a zip of my local project folder. Just in case, you may need to run `npm install`.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Running the app
+First, start the express server with `npm run express`. Then, in another tab, you can start the Vue dev server with `npm run serve`.
 
-### Run your unit tests
-```
-npm run test:unit
-```
+## Running the tests
+First, make sure the express server is currently running. Run the unit tests with `npm run test:unit` and run the End-to-end tests with `npm run test:e2e`.
 
-### Run your end-to-end tests
-```
-npm run test:e2e
-```
 
-### Lints and fixes files
-```
-npm run lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
