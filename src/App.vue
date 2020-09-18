@@ -1,6 +1,6 @@
 <template>
 	<div id="app">
-		<Deals msg="Welcome to Your Vue.js App"/>
+		<Deals />
 	</div>
 </template>
 
@@ -16,11 +16,18 @@ export default {
 </script>
 
 <style lang="stylus">
+
+html
+  font-size 14px
+
+body
+  background-color #314570
+
 #app
   font-family Avenir, Helvetica, Arial, sans-serif
   -webkit-font-smoothing antialiased
   -moz-osx-font-smoothing grayscale
   text-align center
-  color #2c3e50
+  color #aed1d6
   margin-top 60px
 </style>

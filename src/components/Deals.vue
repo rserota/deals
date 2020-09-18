@@ -1,10 +1,12 @@
 <template>
 	<div class="container">
-		<b-button v-b-modal.modal-1>Launch demo modal</b-button>
-		<Deal v-for="deal in deals" :deal="deal" :key="deal.id"></Deal>
+		<h1 class="mb-5">Your Daily Deals!</h1>
+		<Deal v-for="deal in deals" :deal="deal" :key="deal.id" @view-deal="viewDeal"></Deal>
 
-		<b-modal id="modal-1" title="BootstrapVue">
-			<p class="my-4">Hello from modal!</p>
+		<b-modal ok-only id="deal-modal" :title="focusedDeal.headline">
+			<p v-html="focusedDeal.description" class="my-4"></p>
+			<b v-html="focusedDeal.instructions" class="my-4"></b>
+			<b-img center class="modal-img" :src="focusedDeal.image"></b-img>
 		</b-modal>
 	</div>
 </template>
@@ -18,19 +20,24 @@ export default {
 	name: 'Deals',
 	data: ()=> {
 		return {
-			deals: []
+			deals: [],
+			focusedDeal: {}, // which deal is currently being displayed in the modal
 		}
 	},
 	components: {
 		Deal,
 	},
 	async created(){
-		console.log(process.env)
-		let baseUrl = process.env.NODE_ENV === 'production' ? 'https://production.website.url' : 'http://localhost:8000'
+		let baseUrl = process.env.NODE_ENV === 'production' ? process.env.BASE_URL : 'http://localhost:8000'
 		const dealResponse = await axios.get(`${baseUrl}/deals`)
 		if ( dealResponse.status === 200 ) {
-			console.log(dealResponse.data)
 			this.deals = dealResponse.data.deals
+			console.log(this.deals)
+		}
+	},
+	methods: {
+		viewDeal(chosenDeal){
+			this.focusedDeal = chosenDeal
 		}
 	}
 }
@@ -38,16 +45,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus">
-h3
-  margin 40px 0 0
-
-ul
-  list-style-type none
-  padding 0
-
-li
-  display inline-block
-  margin 0 10px
 
 a
   color #42b983

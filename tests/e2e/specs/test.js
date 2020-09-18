@@ -1,21 +1,16 @@
 // For authoring Nightwatch tests, see
 // https://nightwatchjs.org/guide
 
+console.log(process.env.NODE_ENV)
 module.exports = {
 	'default e2e tests': browser => {
 		browser
 			.init()
 			.waitForElementVisible('#app')
-			.assert.elementPresent('.hello')
-			.assert.containsText('h1', 'Welcome to Your Vue.js App')
-			.assert.elementCount('img', 1)
+			.click('.view-deal')
+			.waitForElementVisible('#deal-modal')
+			.assert.elementPresent('.modal-img')
 			.end()
 	},
 
-	'example e2e test using a custom command': browser => {
-		browser
-			.openHomepage()
-			.assert.elementPresent('.hello')
-			.end()
-	}
 }
