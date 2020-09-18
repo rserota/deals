@@ -1,8 +1,14 @@
 import Vue from 'vue'
 import App from './App.vue'
-
+import { ModalPlugin, ButtonPlugin, CardPlugin } from 'bootstrap-vue'
+Vue.use(CardPlugin)
+Vue.use(ModalPlugin)
+Vue.use(ButtonPlugin)
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+// Install BootstrapVue
 Vue.config.productionTip = false
 
 new Vue({
-  render: h => h(App),
+	render: h => h(App),
 }).$mount('#app')
